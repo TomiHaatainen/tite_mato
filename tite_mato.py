@@ -22,6 +22,7 @@ class SnakeGame(QGraphicsView):
 
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.update_game)
+        self.food = None
         
         self.start_game()
 
@@ -80,6 +81,8 @@ class SnakeGame(QGraphicsView):
     def start_game(self):
         self.direction = Qt.Key_Right
         self.snake = [(5, 5), (5, 6), (5, 7)]
+        
+        self.food = self.spawn_food()
 
         self.timer.start(300)
 
