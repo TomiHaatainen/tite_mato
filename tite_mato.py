@@ -5,7 +5,7 @@ from PySide6.QtWidgets import QApplication, QGraphicsView, QGraphicsScene, QMenu
 from PySide6.QtGui import QPainter, QPen, QBrush, QFont
 from PySide6.QtCore import Qt, QTimer
 
-# testi
+# testi2
 
 # Constants
 CELL_SIZE = 20
