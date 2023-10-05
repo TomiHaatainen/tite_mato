@@ -41,6 +41,10 @@ class SnakeGame(QGraphicsView):
     
     def update_game(self):
         head_x, head_y = self.snake[0]
+                # board limits
+        if new_head in self.snake or not (0 <= new_head[0] < GRID_WIDTH) or not (0 <= new_head[1] < GRID_HEIGHT):
+            self.timer.stop()
+            return
 
         if self.direction == Qt.Key_Left:
             new_head = (head_x - 1, head_y)
