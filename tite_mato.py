@@ -41,10 +41,7 @@ class SnakeGame(QGraphicsView):
     
     def update_game(self):
         head_x, head_y = self.snake[0]
-                # board limits
-        if new_head in self.snake or not (0 <= new_head[0] < GRID_WIDTH) or not (0 <= new_head[1] < GRID_HEIGHT):
-            self.timer.stop()
-            return
+
 
         if self.direction == Qt.Key_Left:
             new_head = (head_x - 1, head_y)
@@ -54,10 +51,18 @@ class SnakeGame(QGraphicsView):
             new_head = (head_x, head_y - 1)
         elif self.direction == Qt.Key_Down:
             new_head = (head_x, head_y + 1)
+            
+        # board limits
+        if new_head in self.snake or not (0 <= new_head[0] < GRID_WIDTH) or not (0 <= new_head[1] < GRID_HEIGHT):
+            self.timer.stop()
+            return
 
         self.snake.insert(0, new_head)
   
-        self.snake.pop()    
+        if new_head == self.food:
+            self.food = self.spawn_food()
+        else:
+            self.snake.pop()    
 
         self.print_game()
 
